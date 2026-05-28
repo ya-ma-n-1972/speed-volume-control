@@ -3,11 +3,9 @@
 走行速度（GPS）に応じてメディア音量を自動調整する Android アプリ
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-<!-- TODO: ビルドが通る状態であれば、以下のようなバッジを足すと印象が良いです
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.x-blueviolet.svg)]()
-[![minSdk](https://img.shields.io/badge/minSdk-XX-green.svg)]()
--->
+[![Language: Kotlin](https://img.shields.io/badge/Language-Kotlin-7F52FF.svg)](https://kotlinlang.org/)
+[![minSdk: 26](https://img.shields.io/badge/minSdk-26-green.svg)]()
+[![UI: Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4.svg)](https://developer.android.com/jetpack/compose)
 
 ## 概要
 
@@ -15,17 +13,12 @@
 
 このアプリは **GPS から取得した走行速度に応じて、メディア音量を自動で上げ下げ** します。速度と音量の対応関係はユーザーが自由に設定でき、急に音量が変わらないよう滑らかに追従させることもできます。
 
-<!-- TODO: ここに1〜2文、あなた自身がなぜ作ったか（実体験など）を入れると説得力が増します -->
-
 ## デモ
 
-<!-- TODO: ここに動作中のスクリーンショットまたはGIFを貼ってください。
-ポートフォリオでは「動いている画面」が最も強い説得材料になります。
-例:
-![demo](docs/demo.gif)
--->
+デモ画像は準備中です。下記に追加予定:
 
-> 📌 デモ画像は準備中です。
+![メイン画面](docs/screenshot-main.png)
+![設定画面](docs/screenshot-settings.png)
 
 ## 主な機能
 
@@ -67,23 +60,19 @@ curved     = normalized ^ curvePower
 
 算出した目標音量へ即座に飛ばすと耳障りなため、変化レートが一定未満のときは `ValueAnimator` で目標値まで補間し、`AudioManager` の音量ステップが実際に変わるタイミングだけ反映してチャタリングを抑えています。
 
-<!-- TODO: 設計上の工夫で他にアピールしたい点があれば追記してください
-（例: Broadcastによる疎結合、GPSタイムアウト処理、バッテリー配慮 など） -->
-
 ## 技術スタック
 
-- **言語**: Kotlin
-- **位置情報**: フォアグラウンドサービス（`foregroundServiceType="location"`）
-- **音量制御**: `AudioManager`（`STREAM_MUSIC`） / `ValueAnimator`
-- **設定保存**: SharedPreferences
-- **対応**: Android 13 の通知権限、フォアグラウンドサービスの位置情報タイプに対応
-
-<!-- TODO: 以下はあなたの実プロジェクトの値に置き換えてください（推測で埋めていません）
-- minSdk / targetSdk / compileSdk:
-- Gradle / AGP / Kotlin のバージョン:
-- UIフレームワーク（Jetpack Compose か View か）:
-- 位置情報の取得方式（FusedLocationProvider か LocationManager か）:
--->
+| 項目 | 内容 |
+|---|---|
+| 言語 | Kotlin |
+| UI フレームワーク | Jetpack Compose（Material 3） |
+| minSdk | 26（Android 8.0 / Oreo） |
+| targetSdk / compileSdk | 35（Android 15） |
+| Java / Kotlin JVM target | 11 |
+| 位置情報 | フォアグラウンドサービス（`foregroundServiceType="location"`） |
+| 音量制御 | `AudioManager`（`STREAM_MUSIC`）/ `ValueAnimator` |
+| 設定保存 | SharedPreferences |
+| 通知 | Android 13 以降の通知権限に対応 |
 
 ## 必要な権限
 
@@ -95,25 +84,26 @@ curved     = normalized ^ curvePower
 
 ## ビルド方法
 
-<!-- TODO: あなたの環境で実際に通る手順に置き換えてください。
-最低限「クローン → Android Studio で開く → Run」で動くなら、それを書けば十分です。例:
-
 1. リポジトリをクローン
    ```
    git clone https://github.com/ya-ma-n-1972/speed-volume-control.git
    ```
-2. Android Studio で開く
-3. 実機（GPSが使える端末）でビルド・実行
 
-※ GPS 速度を使うため、エミュレータより実機での動作確認を推奨します。
--->
+2. Android Studio（最新の Stable 推奨）でプロジェクトフォルダを開く
+
+3. 必要な SDK 等の確認
+   - compileSdk 35（Android 15）
+   - Kotlin / Jetpack Compose 対応版の Android Studio
+
+4. 実機（GPS が使える Android 端末）を接続してビルド・実行
+
+> 速度（位置情報）を使うアプリのため、エミュレータでは動作確認が難しい場合があります。**実機での確認を推奨**します。
 
 ## APK のダウンロード
 
-ビルド済みの APK は [Releases](../../releases) からダウンロードできます。
+ビルド済みの APK は [Releases](https://github.com/ya-ma-n-1972/speed-volume-control/releases) からダウンロードできます。
 
-<!-- TODO: Releases に APK をアップロードしたらこの行が活きます。
-インストール時は「提供元不明のアプリ」の許可が必要な旨を一言添えると親切です。 -->
+インストール時は、Android の設定で「提供元不明のアプリ」のインストールを許可する必要があります。
 
 ## ライセンス
 
