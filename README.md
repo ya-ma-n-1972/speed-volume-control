@@ -17,8 +17,7 @@
 
 デモ画像は準備中です。下記に追加予定:
 
-![メイン画面](docs/screenshot-main.png)
-![設定画面](docs/screenshot-settings.png)
+![メイン画面](main.png)
 
 ## 主な機能
 
